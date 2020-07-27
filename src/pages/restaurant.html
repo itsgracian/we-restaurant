@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>werestaurant</title>
-    <link rel="stylesheet" href="./src/assets/css/app.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -16,23 +16,30 @@
                 <div class="d-flex flex-column justify-content-center align-items-center w-100">
                     <div class="mt-5 mb-5 text-center">
                         <div class="font-weight-bold app-name">werestaurant</div>
+                      <div class="mt-2">register restaurant</div>
                    </div>
                 </div>
-                <div class="w-100 text-center"><small class="font-weight-bold">login or signup to your account</small></div>
-                <div class="d-flex flex-row justify-content-center align-items-center w-100">
-                    <div class="auth">
-                        <form action="#" class="login">
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="email" value="">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" name="password" placeholder="password" value="">
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" name="submit" value="login" class="btn btn-primary form-control">
-                            </div>
-                        </form>
-                    </div>
+                <div class="d-flex flex-row align-items-center justify-content-center w-100 mt-5">
+                  <div class="view-restaurant">
+                      <div class="view-title">available restaurant</div>
+                      <div class="display"></div>
+                  </div>
+                  <div class="create-restaurant">
+                      <div class="title">add restaurant</div>
+                      <div class="restaurant-form">
+                          <form action="#">
+                              <div class="form-group">
+                                  <input type="text" name="name" id="" class="form-control" placeholder="name of restaurance">
+                              </div>
+                              <div class="form-group">
+                                  <textarea name="description" name="description" placeholder="description" class="form-control"></textarea>
+                              </div>
+                              <div class="form-group">
+                                  <input type="submit" value="submit" class="btn btn-primary form-control">
+                              </div>
+                          </form>
+                      </div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -48,8 +55,6 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-    <script src="./src/assets/js/auth.js" type="module"></script>
-
-</body>
+    <script src="../assets/js/restaurant.js"></script>
 </body>
 </html>

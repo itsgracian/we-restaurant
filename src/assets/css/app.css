@@ -19,3 +19,14 @@
     outline: none !important;
     box-shadow: none !important;
 }
+.view-restaurant{
+    width: 70%;
+}
+.create-restaurant{
+    width: 30%;
+}
+.create-restaurant .title{
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+}

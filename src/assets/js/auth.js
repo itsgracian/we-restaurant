@@ -1,13 +1,13 @@
-import { firebaseConfig } from './firebase.config.js';
+import firebase from './firebase.setup.js';
 const errorElement = document.createElement('small');
-
-//initialize app
-firebase.initializeApp(firebaseConfig);
+const restaurantPath = '/src/pages/restaurant.html';
+async function createAccount({email, password}){
+    await firebase.auth().createUserWithEmailAndPassword(email, password);
+}
 async function authWithFirebase({email, password }){
     try {
-        const res = await firebase.auth().createUserWithEmailAndPassword(email, password);
-        const { user } = res;
-        localStorage.setItem('restaurant_auth_token', user.xa);
+        const res = await firebase.auth().signInWithEmailAndPassword(email, password);
+        window.location.href=restaurantPath;
     } catch (error) {
         errorElement.setAttribute('class', 'error text-danger');
         errorElement.innerText = error.message;
@@ -20,3 +20,4 @@ document.querySelector('.login').addEventListener('submit',function(e){
     const password = document.querySelector('.login input[type="password"]').value;
     authWithFirebase({email, password});
 });
+
