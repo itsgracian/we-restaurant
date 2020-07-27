@@ -2,7 +2,11 @@ import firebase from './firebase.setup.js';
 const errorElement = document.createElement('small');
 const firestore = firebase.firestore();
 
+function clearItems(){
+    document.querySelector('.display').innerHTML="";
+}
 async function viewRestaurant(){
+    clearItems();
     try {
         const find = await firestore.collection('restaurants').get();
         const row = document.createElement('row');
@@ -74,7 +78,16 @@ document.querySelector('.restaurant-form form').addEventListener('submit', funct
 viewRestaurant();
 async function deleteRestaurant(e){
     const doc = e.currentTarget.getAttribute('item-id');
-    await firestore.collection('restaurants').doc(doc).delete();
-    document.querySelector('.display').innerHTML="";
-    await viewRestaurant();
+
+    firebase.auth().onAuthStateChanged(async function(user){
+        if(user){
+            await firestore.collection('restaurants').doc(doc).delete();
+            clearItems();
+            await viewRestaurant(); 
+        }else{
+            errorElement.setAttribute('class', 'error text-danger text-center');
+            errorElement.innerText = 'something wrong try again later';
+            document.querySelector('.view-restaurant .display').appendChild(errorElement);
+        }
+    });
 }
