@@ -13,9 +13,27 @@
     <div class="app">
         <div class="container">
             <div class="row">
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                    <div class="font-weight-bold">werestaurant</div>
-                    <div>register restaurant</div>
+                <div class="d-flex flex-column justify-content-center align-items-center w-100">
+                    <div class="mt-5 mb-5 text-center">
+                        <div class="font-weight-bold app-name">werestaurant</div>
+                      <div class="mt-2">register restaurant</div>
+                   </div>
+                </div>
+                <div class="w-100 text-center"><small class="font-weight-bold">login or signup to your account</small></div>
+                <div class="d-flex flex-row justify-content-center align-items-center w-100">
+                    <div class="auth">
+                        <form action="#" class="login">
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" placeholder="email" value="">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" placeholder="password" value="">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="submit" value="login" class="btn btn-primary form-control">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -31,6 +49,7 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="./src/js/auth.js"></script>
 </body>
 </body>
 </html>

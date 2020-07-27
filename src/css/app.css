@@ -5,3 +5,17 @@
 .app{
     position: relative;
 }
+.app-name{
+    font-size: 30px;
+    font-weight: bold;
+}
+.auth{
+    position: relative;
+    margin-top: 3rem;
+    width: 26%;
+}
+.auth .form-control{
+    height: 50px;
+    outline: none !important;
+    box-shadow: none !important;
+}
