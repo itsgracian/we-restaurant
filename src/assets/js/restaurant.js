@@ -13,6 +13,11 @@ async function viewRestaurant(){
             const cardBody = document.createElement('div');
             const cardTitle = document.createElement('div');
             const cardDescription = document.createElement('p');
+            const link = document.createElement('a');
+            link.setAttribute('href', '#');
+            link.setAttribute('item-id', `${item.id}`);
+            link.setAttribute('class', 'card-link btn btn-danger');
+            link.addEventListener('click', deleteRestaurant);
             col.setAttribute('class', 'col-md-6');
             card.setAttribute('class', 'card');
             card.setAttribute('style', 'margin-top: 1rem');
@@ -21,8 +26,10 @@ async function viewRestaurant(){
             cardDescription.setAttribute('class', 'card-text');
             cardTitle.innerText=item.data().name;
             cardDescription.innerText=item.data().description;
+            link.innerText='trash';
             cardBody.appendChild(cardTitle);
             cardBody.appendChild(cardDescription);
+            cardBody.appendChild(link);
             card.appendChild(cardBody);
             col.appendChild(card);
             row.appendChild(col);
@@ -39,6 +46,7 @@ async function viewRestaurant(){
 async function addRestaurant({name, description, user}){
     try {
        await firestore.collection('restaurants').add({name, description, user });
+       await viewRestaurant();
     } catch (error) {
         errorElement.setAttribute('class', 'error text-danger');
         errorElement.innerText = 'something wrong try again later';
@@ -53,7 +61,9 @@ document.querySelector('.restaurant-form form').addEventListener('submit', funct
             //added restaurant
             const name=document.querySelector('.restaurant-form form input[name="name"]').value;
             const description=document.querySelector('.restaurant-form form textarea[name="description"]').value;
-            addRestaurant({name, description, user: user.l})
+            addRestaurant({name, description, user: user.l});
+            name='';
+            description='';
         }else{
             errorElement.setAttribute('class', 'error text-danger');
             errorElement.innerText = 'login to continue';
@@ -61,7 +71,10 @@ document.querySelector('.restaurant-form form').addEventListener('submit', funct
         }
     })
 });
-
-window.onload=function(){
-    viewRestaurant();
+viewRestaurant();
+async function deleteRestaurant(e){
+    const doc = e.currentTarget.getAttribute('item-id');
+    await firestore.collection('restaurants').doc(doc).delete();
+    document.querySelector('.display').innerHTML="";
+    await viewRestaurant();
 }
