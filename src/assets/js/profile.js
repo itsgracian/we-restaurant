@@ -47,7 +47,9 @@ const deleteMyAccount = async (e)=>{
             form.appendChild(error);
         }
     } catch (error) {
-     console.log(error.message);   
+        error.setAttribute('class', 'text-danger');
+        error.innerText='something wrong try again later.';
+        form.appendChild(error);
     }
 }
 const findCurrentUser = ()=>{
