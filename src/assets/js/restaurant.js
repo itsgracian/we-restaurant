@@ -1,7 +1,7 @@
 import firebase from './firebase.setup.js';
 const errorElement = document.createElement('small');
 const firestore = firebase.firestore();
-
+const logout = document.querySelector('.logout');
 function clearItems(){
     document.querySelector('.display').innerHTML="";
 }
@@ -91,4 +91,11 @@ async function deleteRestaurant(e){
     });
 }
 
+// logout
+logout.addEventListener('click', function(e){
+    e.preventDefault();
+    firebase.auth().signOut().then(function(){
+        window.location.href='/index.html'
+    }).catch(function(error){})
+})
 viewRestaurant();
