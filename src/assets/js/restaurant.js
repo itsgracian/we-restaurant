@@ -22,7 +22,7 @@ async function viewRestaurant(){
             link.setAttribute('item-id', `${item.id}`);
             link.setAttribute('class', 'card-link btn btn-danger');
             link.addEventListener('click', deleteRestaurant);
-            col.setAttribute('class', 'col-md-6');
+            col.setAttribute('class', 'col-md-12');
             card.setAttribute('class', 'card');
             card.setAttribute('style', 'margin-top: 1rem');
             cardBody.setAttribute('class', 'card-body');
@@ -75,7 +75,6 @@ document.querySelector('.restaurant-form form').addEventListener('submit', funct
         }
     })
 });
-viewRestaurant();
 async function deleteRestaurant(e){
     const doc = e.currentTarget.getAttribute('item-id');
 
@@ -91,3 +90,5 @@ async function deleteRestaurant(e){
         }
     });
 }
+
+viewRestaurant();
