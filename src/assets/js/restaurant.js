@@ -63,11 +63,11 @@ document.querySelector('.restaurant-form form').addEventListener('submit', funct
     firebase.auth().onAuthStateChanged(function(user){
         if(user){
             //added restaurant
-            const name=document.querySelector('.restaurant-form form input[name="name"]').value;
-            const description=document.querySelector('.restaurant-form form textarea[name="description"]').value;
-            addRestaurant({name, description, user: user.l});
-            name='';
-            description='';
+            const name=document.querySelector('.restaurant-form form input[name="name"]');
+            const description=document.querySelector('.restaurant-form form textarea[name="description"]');
+            addRestaurant({name: name.value, description: description.value, user: user.l});
+            name.value='';
+            description.value='';
         }else{
             errorElement.setAttribute('class', 'error text-danger');
             errorElement.innerText = 'login to continue';
