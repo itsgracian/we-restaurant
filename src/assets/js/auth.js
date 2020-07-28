@@ -3,8 +3,8 @@ const errorElement = document.createElement('small');
 const restaurantPath = '/src/pages/restaurant.html';
 const newAccount = document.querySelector('.newAccount');
 
-//
 newAccount.addEventListener('click', createAccount);
+// loginWithGoogle.addEventListener('click', signInWithGoogle);
 async function createAccount(){
     try {
         const email = document.querySelector('.login input[type="email"]').value;
@@ -19,7 +19,7 @@ async function createAccount(){
         errorElement.innerText = error.message;
         document.querySelector('.login').appendChild(errorElement);
     }
-}
+};
 async function authWithFirebase({email, password }){
     try {
         await firebase.auth().signInWithEmailAndPassword(email, password);
@@ -29,11 +29,13 @@ async function authWithFirebase({email, password }){
         errorElement.innerText = error.message;
         document.querySelector('.login').appendChild(errorElement);
     }
-}
+};
+
 document.querySelector('.login').addEventListener('submit',function(e){
     e.preventDefault();
     const email = document.querySelector('.login input[type="email"]').value;
     const password = document.querySelector('.login input[type="password"]').value;
     authWithFirebase({email, password});
 });
+
 
